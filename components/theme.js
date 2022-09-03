@@ -3,62 +3,74 @@ import { cyan, pink } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
+    type: 'light',
     primary: {
-      main: "#51232e",
+      main: '#51232e',
     },
     secondary: {
-      main: "#FCBA04",
+      main: '#FCBA04',
     },
-    backgrounds: {
-      main: "#fcf8f9",
-      main2: "#f6eaed",
-      main3: "#f0dbe0",
-      main4: "#e9cdd4",
-      main5: "#ddb1bb",
+    background: {
+      default: '#fcf8f9',
+      paper: '#f6eaed',
     },
-    darks: {
-      dark1: "#070304",
-      dark2: "#15090c",
-      dark3: "#240f14",
-      dark4: "#32161c",
-      dark5: "#401c24",
-    },
-    chips: {
-      yellow: {
-        text: '#89632a',
-        fill: '#e1c69d'
-      },
-      purple: {
-        text: '#492f64',
-        fill: '#bfa8d6'
-      },
-      green: {
-        text: '#2b593f',
-        fill: '#a9d5bc'
-      },
-      red: {
-        text: '#6e3630',
-        fill: '#d8aba6'
-      },
-      blue: {
-        text: '#28456c',
-        fill: '#a2bbdd'
-      },
-    }
   },
   typography: {
-    "@ $root": {
-      fontFamiliy: [
-        'Noto Sans Display',
-        'sans-serif'
-      ].join(','),
+    fontFamily: ['Mukta', 'sans-serif'].join(','),
+  },
+  spacing: 8,
+  shape: {
+    borderRadius: 4,
+  },
+  overrides: {
+    MuiAppBar: {
+      colorInherit: {
+        backgroundColor: '#689f38',
+        color: '#fff',
+      },
     },
   },
-  components: {
-    MuiPaper: {
-      palette: ({ theme }) => ({
-        primary: theme.palette.primary.main,
-      }),
+  props: {
+    MuiButtonBase: {
+      disableRipple: true,
+    },
+    MuiButton: {
+      size: 'small',
+    },
+    MuiButtonGroup: {
+      size: 'small',
+    },
+    MuiCheckbox: {
+      size: 'small',
+    },
+    MuiFab: {
+      size: 'small',
+    },
+    MuiFormControl: {
+      margin: 'dense',
+      size: 'small',
+    },
+    MuiFormHelperText: {
+      margin: 'dense',
+    },
+    MuiIconButton: {
+      size: 'small',
+    },
+    MuiInputBase: {
+      margin: 'dense',
+    },
+    MuiInputLabel: {
+      margin: 'dense',
+    },
+    MuiRadio: {
+      size: 'small',
+    },
+    MuiSwitch: {
+      size: 'small',
+    },
+    MuiTextField: {
+      margin: 'dense',
+      size: 'small',
     },
   },
 });
