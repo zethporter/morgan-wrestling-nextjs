@@ -1,11 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Box, Paper, Typography} from "@mui/material"
+import { Box } from "@mui/material"
 import HomeContent from '../components/HomeContent'
 import Footer from '../components/footer'
-import NavTabs from '../components/NavTabs'
-
-
 
 export default function Home() {
   return (
@@ -16,11 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box sx={{ m: 0 }}>
-        <NavTabs tab={0} />
-        <Paper elevation={8} sx={{ backgroundColor: "backgrounds.main", m: 0, pt: 1 }}>
-          <HomeContent />
-        </Paper>
+      <Box sx={{ backgroundColor: "background.dark" }}>
+        <HomeContent />
       </Box>
       <Footer />
     </div>
