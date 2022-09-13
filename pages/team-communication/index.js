@@ -88,7 +88,7 @@ const TeamCommunication = () => {
                                     <li>Welcome to our New Guilded Server!</li>
                                     <ul>
                                         <li>Feel free to look around</li>
-                                        <li>Within the app on the left side you will see a &apos;how-to-use&apos; item <br/> There is a detailed write up of best practices and general how to use the app tips <br/> It is highly recommended to stop by there if you haven't used an app like this before</li>
+                                        <li>Within the app on the left side you will see a &apos;how-to-use&apos; item <br/> There is a detailed write up of best practices and general how to use the app tips <br/> It is highly recommended to stop by there if you haven&apos;t used an app like this before</li>
                                     </ul>
                                 </ol>
                                 <p>A couple last things!</p>
