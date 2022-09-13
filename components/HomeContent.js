@@ -73,7 +73,7 @@ const HomeContent = () => {
                 </Grid>
                 {
                   data.calendarItems.map((item, i) => (
-                    <Grid Item xs={12} md={6}>
+                    <Grid key={i} Item xs={12} md={6}>
                       <Paper elevation={3} sx={{ backgroundColor: 'background.default', p: 2, mb: 1, borderLeft: '5px solid', borderColor: item.home ? 'primary.light' : 'secondary.light' }}>
                         <Typography sx={{ color: 'primary.main' }} variant='h6'>{item.name}</Typography>
                         <Divider sx={{ backgroundColor: item.home ? 'primary.light' : 'secondary.light', mb: 2 }} />

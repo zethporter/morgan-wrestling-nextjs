@@ -34,7 +34,7 @@ const TeamCommunication = () => {
 
                             <Typography variant='body2'>This year we have decided to try a new communication tool!</Typography>
                             <Div>
-                                <p>There are many reasons we decided to switch from the current method of communication. Rather than bore you with the thought processes of Wrestlig Coaches. I'll give some goals of the new communication platform instead.</p>
+                                <p>There are many reasons we decided to switch from the current method of communication. Rather than bore you with the thought processes of Wrestlig Coaches. We will give some goals of the new communication platform instead.</p>
                                 <ol>
                                     <li>Better Overal Communication</li>
                                     <li>Less meaningless information</li>
@@ -56,7 +56,7 @@ const TeamCommunication = () => {
                             <Typography variant='h5'>Guilded General Information</Typography>
                             <Divider sx={{ backgroundColor: 'primary.light', mb: 2, mt: 1 }} />
                             <Div>
-                                <p>The app we have chosen is called Guilded. If you haven't heard of it don't worry. It is a messaging platform designed for large group communication. Similar to Discord, Slack, or Microsoft Teams.</p>
+                                <p>The app we have chosen is called Guilded. If you haven&apos;t heard of it don&apos;t worry. It is a messaging platform designed for large group communication. Similar to Discord, Slack, or Microsoft Teams.</p>
                                 <p>This app was chosen because of its large feature set. These Features include:</p>
                                 <ul>
                                     <li>Calendar(s)</li>
@@ -68,18 +68,18 @@ const TeamCommunication = () => {
                             <Typography variant='h5'>Set-Up Instructions</Typography>                            
                             <Divider sx={{ backgroundColor: 'primary.light', mb: 2, mt: 1 }} />
                             <Div>
-                                <p>At the bottom of this page there is a big Yellow button. Click on that button after you have read these instructions. It will automatically redirect you to Guilded's website</p>
+                                <p>At the bottom of this page there is a big Yellow button. Click on that button after you have read these instructions. It will automatically redirect you to Guilded&apos;s website</p>
                                 <p>Follow these steps:</p>
                                 <ol>
                                     <li>Create Account</li>
                                     <ul>
                                         <li>You will first be directed to create a Guilded account</li>
-                                        <li>During the creation of your account you will be prompted to make a username <br/> (it doesn't matter what it is. But people will be able to see it if they view your profile)</li>
+                                        <li>During the creation of your account you will be prompted to make a username <br/> (it doesn&apos;t matter what it is. But people will be able to see it if they view your profile)</li>
                                     </ul>
                                     <li>Fill out the short form</li>
                                     <ul>
                                         <li>All goofy and incomplete applications will be rejected</li>
-                                        <li>The name you use as your Full Name will be set as your 'Nickname' on the Morgan Wrestling server (group) <br/> That is the name everybody will see your posts and messages as</li>
+                                        <li>The name you use as your Full Name will be set as your &apos;Nickname&apos; on the Morgan Wrestling server (group) <br/> That is the name everybody will see your posts and messages as</li>
                                     </ul>
                                     <li>Wait for your application to be approved!</li>
                                     <ul>
@@ -88,13 +88,13 @@ const TeamCommunication = () => {
                                     <li>Welcome to our New Guilded Server!</li>
                                     <ul>
                                         <li>Feel free to look around</li>
-                                        <li>Within the app on the left side you will see a 'how-to-use' item <br/> There is a detailed write up of best practices and general how to use the app tips <br/> It is highly recommended to stop by there if you haven't used an app like this before</li>
+                                        <li>Within the app on the left side you will see a &apos;how-to-use&apos; item <br/> There is a detailed write up of best practices and general how to use the app tips <br/> It is highly recommended to stop by there if you haven't used an app like this before</li>
                                     </ul>
                                 </ol>
                                 <p>A couple last things!</p>
                                 <ul>
-                                    <li>Thank you for downloading another app! We know it isn't awesome to have a bunch of apps on your phone.</li>
-                                    <li>If you have any questions after you have gotten in the app. Check out the 'how-to-use' page</li>
+                                    <li>Thank you for downloading another app! We know it isn&apos;t awesome to have a bunch of apps on your phone.</li>
+                                    <li>If you have any questions after you have gotten in the app. Check out the &apos;how-to-use&apos; page</li>
                                     <li>YOU DO NOT NEED TO CREATE A SERVER This was already done and it is not necessary to make your own server the app may prompt you to do so</li>
                                     <li>Read these instructions before clicking the button below. It is always a pain to jump between screens when setting something up</li>
                                 </ul>
