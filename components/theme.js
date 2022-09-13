@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { cyan, pink } from "@mui/material/colors";
 
-const theme = createTheme({
+const preTheme = createTheme({
   palette: {
     type: 'light',
     primary: {
@@ -11,12 +11,13 @@ const theme = createTheme({
       main: '#FCBA04',
     },
     background: {
-      default: '#fcf8f9',
+      default: '#ffffff',
       paper: '#f6eaed',
+      dark: '#51232e'
     },
   },
   typography: {
-    fontFamily: ['Mukta', 'sans-serif'].join(','),
+    fontFamily: ['Roboto', 'sans-serif'].join(','),
   },
   spacing: 8,
   shape: {
@@ -74,5 +75,7 @@ const theme = createTheme({
     },
   },
 });
+
+const theme = responsiveFontSizes(preTheme);
 
 export default theme;

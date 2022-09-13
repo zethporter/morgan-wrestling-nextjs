@@ -1,5 +1,5 @@
 import react, { useState, useEffect } from "react";
-import { Typography, Box, Paper, Grid, Divider, Skeleton, Stack, SvgIcon } from "@mui/material";
+import { Typography, Box, Paper, Grid, Divider, Skeleton, Stack, Button } from "@mui/material";
 import useSWR from 'swr';
 import CalendarComponent from "./CalendarComponent";
 import AnnouncementCard from "./AnnouncementCard";
@@ -41,52 +41,58 @@ const HomeContent = () => {
   console.log(data)
 
   return (
-    <Box sx={{ backgroundColor: "transparent", m: 0, minHeight: "90vh" }}>
-      <Grid container spacing={2} justifyContent="center">
-        <Grid item xs={12}>
-          <Paper
-            sx={{ backgroundColor: "backgrounds.main", m: 0, p: 2 }}
-            elevation={5}
-          >
-            <Grid container justifyContent='center'>
-              <Grid sx={{ textAlign: 'right', pr: 10 }} item xs={2}>
-                <Trojan sx={{ fontSize: '8em' }} />
-              </Grid>
-              <Grid item xs={6}>
-                <Typography sx={{ color: 'primary.main' }} variant="h1">
-                  Morgan High Wrestling
-                </Typography>
-              </Grid>
+    <Grid container spacing={2} justifyContent="center" sx={{ p: 2 }}>
+      <Grid item xs={12} md={10}>
+        <Paper
+          sx={{ backgroundColor: "background.default", p: 2 }}
+          elevation={5}
+        >
+          <Grid container justifyContent='center' sx={{ textAlign: 'center' }}>
+            <Grid item xs={12} md={3} justifyItems='center'>
+              <Trojan sx={{ width: '70%', height: 'auto' }} />
             </Grid>
-          </Paper>
-        </Grid>
-        <Grid item xs={11}>
-          <Paper
-            elevation={0}
-            sx={{ p: 2, backgroundColor: "backgrounds.main" }}
-          >
-            <Grid container justifyContent="space-between">
-              <Paper elevation={3} sx={{ background: 'white', p: 2 }}>
+            <Grid alignSelf='center' item xs={12} md={9}>
+              <Typography variant='h1' sx={{ color: 'primary.main', fontWeight: 600 }}>
+                Morgan High Wrestling
+              </Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={10}>
+        <Paper
+          elevation={0}
+          sx={{ p: 2, backgroundColor: "background.default" }}
+        >
+          <Grid container justifyContent='center'>
+            <Grid item xs={12} md={6}>
+              <Grid container justifyContent="center">
+                <Grid item xs={12}>
+                <Typography sx={{ color: 'primary.main', fontWeight: 500, textAlign: 'center' }} variant='h3'>Schedule</Typography>
+                <Divider sx={{ backgroundColor: 'primary.light', mb: 2 }} />
+                </Grid>
                 {
                   data.calendarItems.map((item, i) => (
-                    <Grid item xs={12} key={i}>
-                      <Stack>
-                        <Typography variant='h6'>{item.name}</Typography>
-                        <Typography variant='subtitle1'>{
-                          item.endDate === null ? dateFormat(item.startDate) : [dateFormat(item.startDate), dateFormat(item.endDate)].join(' - ')
-                        }</Typography>
-                        <Typography variant='subtitle2'>{item.type}</Typography>
-                        <Divider sx={{ backgroundColor: 'secondary.light', mb: 2 }} />
-                      </Stack>
+                    <Grid Item xs={12} md={6}>
+                      <Paper elevation={3} sx={{ backgroundColor: 'background.default', p: 2, mb: 1, borderLeft: '5px solid', borderColor: item.home ? 'primary.light' : 'secondary.light' }}>
+                        <Typography sx={{ color: 'primary.main' }} variant='h6'>{item.name}</Typography>
+                        <Divider sx={{ backgroundColor: item.home ? 'primary.light' : 'secondary.light', mb: 2 }} />
+                        <Grid container justifyContent='space-between'>
+                          <Typography variant='subtitle1'>{
+                            item.endDate === null ? dateFormat(item.startDate) : [dateFormat(item.startDate), dateFormat(item.endDate)].join(' - ')
+                          }</Typography>
+                          <Typography variant='subtitle2'>{item.type}</Typography>
+                        </Grid>
+                      </Paper>
                     </Grid>
                   ))
                 }
-              </Paper>
+              </Grid>
             </Grid>
-          </Paper>
-        </Grid>
+          </Grid>
+        </Paper>
       </Grid>
-    </Box >
+    </Grid>
   );
 };
 
