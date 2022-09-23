@@ -12,7 +12,10 @@ const preTheme = createTheme({
     },
     background: {
       default: '#ffffff',
+      gradient:  'radial-gradient(circle, rgba(195,88,114,1) 17%, rgba(81,35,46,1) 85%, rgba(81,35,46,1) 100%)',
       paper: '#f6eaed',
+      oldHome: '#f6eaed',
+      oldAway: '#fff8e6',
       dark: '#51232e'
     },
   },
