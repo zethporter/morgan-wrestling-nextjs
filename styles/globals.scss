@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -60,11 +64,11 @@ a {
 }
 
 .rbc-off-range {
-  color: $out-of-range-color;
+  color: #8b5757;
 }
 
 .rbc-off-range-bg {
-  background: $out-of-range-bg-color;
+  background: #8b5757;
 }
 
 .rbc-header {
@@ -78,15 +82,15 @@ a {
   font-weight: bold;
   font-size: 90%;
   min-height: 0;
-  border-bottom: 1px solid $cell-border;
+  border-bottom: 1px solid #8b5757;
 
   & + & {
-    border-left: 1px solid $cell-border;
+    border-left: 1px solid #8b5757;
   }
 
   .rbc-rtl & + & {
     border-left-width: 0;
-    border-right: 1px solid $cell-border;
+    border-right: 1px solid #8b5757;
   }
 
   & > a {
@@ -136,5 +140,5 @@ a {
 }
 
 .rbc-today {
-  background-color: $today-highlight-bg;
+  background-color: #8b5757;
 }
