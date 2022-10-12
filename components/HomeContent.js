@@ -60,7 +60,7 @@ const HomeContent = () => {
         <p className="text-xl md:text-3xl text-center font-medium text-maroon-700 p-2">
           Schedule
         </p>
-        <div class="flex flex-wrap pt-2 gap-2.5">
+        <div className="flex flex-wrap pt-2 gap-2.5">
         {data.calendarItems.map((item, i) => {
           let disabled = null;
           new Date(item.startDate) > twoDaysAhead
@@ -80,12 +80,12 @@ const HomeContent = () => {
               className={`bg-white flex-grow w-full lg:w-1/3 rounded shadow-xl p-2 border-l-4 ${disabled.border} hover:animate-pulse hover:bg-gold-100`}
               onClick={() => openInNewTab(item.link)}
             >
-              <div class="divide-y divide-solid divide-maroon-600">
+              <div className="divide-y divide-solid divide-maroon-600">
                 <div>
                   <p className="text-xl text-maroon-700">{item.name}</p>
                 </div>
-                <div class="flex flex-wrap justify-between">
-                <p class="text-lg text-maroon-700">
+                <div className="flex flex-wrap justify-between">
+                <p className="text-lg text-maroon-700">
                   {item.endDate === null
                           ? dateFormat(item.startDate)
                           : [
@@ -93,7 +93,7 @@ const HomeContent = () => {
                               dateFormat(item.endDate),
                             ].join(" - ")}
                             </p>
-                            <p class="text-base text-maroon-700">{item.type}</p>
+                            <p className="text-base text-maroon-700">{item.type}</p>
                 </div>
               </div>
             </div>
