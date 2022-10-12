@@ -44,7 +44,7 @@ const HomeContent = () => {
           Morgan High Wrestling
         </p>
       </div>
-          <div class="animate-pulse w-full h-96 rounded-lg" height={200} />
+          <div className="animate-pulse w-full h-96 rounded-lg" height={200} />
       </div>
     );
   if (error) return <p>No profile data</p>;
