@@ -12,9 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box sx={{ backgroundColor: "background.dark" }}>
+      <div class="p-1 min-h-screen bg-gradient-to-br from-maroon-500 to-maroon-700">
         <HomeContent />
-      </Box>
+      </div>
       <Footer />
     </div>
   )

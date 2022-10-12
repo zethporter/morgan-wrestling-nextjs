@@ -10,20 +10,20 @@ export default function Home() {
       </Head>
 
       <body>
-        <div class="p-7">
+        <div class="p-7 min-h-screen bg-gradient-to-br from-maroon-500 to-maroon-700">
         <form>
             <label class="block">
-                <span class="block text-lg font-medium text-slate-700">
+                <span class="block text-lg font-medium text-maroon-900">
                     username
                 </span>
-                <input type="text" value="tbone" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-600 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                <input type="text" value="tbone" class="mt-1 block w-full px-3 py-2 bg-gold-50 border border-gold-600 rounded-md text-sm shadow-sm placeholder-gold-400
+      focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500
+      disabled:bg-gold-50 disabled:text-slate-500 disabled:border-gold-200 disabled:shadow-none
       invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500
       "/>
             </label>
-            <button class="text-white border-slate-600 border-2 bg-slate-500 hover:bg-slate-600 m-1 px-4 py-2 rounded">
+            <button class="text-white border-gold-600 border-2 bg-gradient-to-r from-gold-500 to-gold-700 hover:bg-gradient-to-r hover:from-gold-600 hover:to-gold-700 m-1 px-4 py-2 rounded">
                 save
             </button>
         </form>

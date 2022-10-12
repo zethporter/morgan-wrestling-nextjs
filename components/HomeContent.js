@@ -9,135 +9,99 @@ import {
   Card,
   CardActionArea,
   Snackbar,
-  Alert
+  Alert,
 } from "@mui/material";
-import { FiFrown } from 'react-icons/fi'
-import useSWR from 'swr';
-
-import Trojan from './Trojan'
+import { FiFrown } from "react-icons/fi";
+import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const HomeContent = () => {
-  const { data, error } = useSWR('/api/calendar', fetcher);
+  const { data, error } = useSWR("/api/calendar", fetcher);
   const [linkAlert, setLinkAlert] = useState(false);
   const today = new Date();
   const twoDaysAhead = new Date();
-  twoDaysAhead.setDate(today.getDate() + 2)
-  const openInNewTab = url => {
-    url ? window.open(url, '_blank', 'noopener,noreferrer') : setLinkAlert(true)
+  twoDaysAhead.setDate(today.getDate() + 2);
+  const openInNewTab = (url) => {
+    url
+      ? window.open(url, "_blank", "noopener,noreferrer")
+      : setLinkAlert(true);
   };
 
   const dateFormat = (date) => {
     if (date === undefined || date === null) {
-      return ''
+      return "";
     } else {
-      return new Intl.DateTimeFormat('en-US').format(new Date(date))
+      return new Intl.DateTimeFormat("en-US").format(new Date(date));
     }
-  }
+  };
 
-  if (!data) return (
-    <Box sx={{ backgroundColor: "transparent", m: 0, minHeight: "90vh" }}>
-      <Grid item xs={12}>
-        <Skeleton height={200} />
-      </Grid>
-      <Grid container justifyContent='space-between' sx={{ px: 5 }}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Skeleton variant='rounded' height={300} sx={{ m: 1 }} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Skeleton variant='rounded' height={300} sx={{ m: 1 }} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Skeleton variant='rounded' height={300} sx={{ m: 1 }} />
-        </Grid>
-      </Grid>
-    </Box>
-  )
+  if (!data)
+    return (
+      <div>
+        <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
+        <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
+          Morgan High Wrestling
+        </p>
+      </div>
+          <div class="animate-pulse w-full h-96 rounded-lg" height={200} />
+      </div>
+    );
   if (error) return <p>No profile data</p>;
 
   return (
-    <Grid container spacing={2} justifyContent="center" sx={{ p: 2 }}>
-      <Snackbar
-        onClick={() => openInNewTab('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        open={linkAlert}
-        autoHideDuration={2500}
-        onClose={() => setLinkAlert(false)}
-      >
-        <Alert severity="error">
-          <Typography sx={{ textAlign: 'center' }} variant='body2'>There is no more information for this event...</Typography>
-        </Alert>
-      </Snackbar>
-
-      <Grid item xs={12} md={10}>
-        <Paper
-          sx={{ backgroundColor: "background.default", p: 2 }}
-          elevation={5}
-        >
-          <Grid container justifyContent='center' sx={{ textAlign: 'center' }}>
-            <Grid item xs={12} md={3} justifyItems='center'>
-              <Trojan sx={{ width: '70%', height: 'auto' }} />
-            </Grid>
-            <Grid alignSelf='center' item xs={12} md={9}>
-              <Typography variant='h1' sx={{ color: 'primary.main', fontWeight: 600 }}>
-                Morgan High Wrestling
-              </Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-      <Grid item xs={12} md={10}>
-        <Paper
-          elevation={0}
-          sx={{ p: 2, backgroundColor: "background.default" }}
-        >
-          <Grid container justifyContent='center'>
-            <Grid item xs={12} md={10} lg={11} xl={9}>
-              <Grid container justifyContent="center">
-                <Grid item xs={12}>
-                  <Typography sx={{ color: 'primary.main', fontWeight: 500, textAlign: 'center' }} variant='h3'>Schedule</Typography>
-                  <Divider sx={{ backgroundColor: 'primary.light', mb: 2 }} />
-                </Grid>
-                {
-                  data.calendarItems.map((item, i) => {
-                    let disabled = null;
-                    new Date(item.startDate) > twoDaysAhead
-                      ? disabled = {
-                        background: 'default',
-                        elevation: 5
-                      }
-                      : disabled = {
-                        background: item.home ? 'oldHome' : 'oldAway',
-                        elevation: 1
-                      };
-
-                    return (
-                      <Grid key={i} item xs={12} md={6} lg={4} sx={{ px: 1 }}>
-                        <Paper elevation={disabled.elevation} sx={{ mb: 1 }}>
-                          <Card sx={{ backgroundColor: `background.${disabled.background}`, borderLeft: '5px solid', borderColor: item.home ? 'primary.light' : 'secondary.light' }}>
-                            <CardActionArea sx={{ p: 2 }} onClick={() => openInNewTab(item.link)}>
-                              <Typography sx={{ color: 'primary.main' }} noWrap variant='h6'>{item.name}</Typography>
-                              <Divider sx={{ backgroundColor: item.home ? 'primary.light' : 'secondary.light', mb: 2 }} />
-                              <Grid container justifyContent='space-between'>
-                                <Typography noWrap variant='subtitle1'>{
-                                  item.endDate === null ? dateFormat(item.startDate) : [dateFormat(item.startDate), dateFormat(item.endDate)].join(' - ')
-                                }</Typography>
-                                <Typography variant='subtitle2'>{item.type}</Typography>
-                              </Grid>
-                            </CardActionArea>
-                          </Card>
-                        </Paper>
-                      </Grid>
-                    )
-                  })
-                }
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-    </Grid>
+    <>
+      <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
+        <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
+          Morgan High Wrestling
+        </p>
+      </div>
+      <div className="container bg-white rounded-lg mx-auto my-3 p-2 divide-y-2 divide-solid divide-maroon-600 shadow-xl">
+        <p className="text-xl md:text-3xl text-center font-medium text-maroon-700 p-2">
+          Schedule
+        </p>
+        <div class="flex flex-wrap pt-2 gap-2.5">
+        {data.calendarItems.map((item, i) => {
+          let disabled = null;
+          new Date(item.startDate) > twoDaysAhead
+            ? (disabled = {
+                background: "default",
+                border: item.home ? "border-maroon-600" : "border-gold-500",
+                elevation: 5,
+              })
+            : (disabled = {
+                background: item.home ? "oldHome" : "oldAway",
+                border: item.home ? "border-maroon-600" : "border-gold-500",
+                elevation: 1,
+              });
+          return (
+            <div
+              key={i}
+              className={`bg-white flex-grow w-full lg:w-1/3 rounded shadow-xl p-2 border-l-4 ${disabled.border} hover:animate-pulse hover:bg-gold-100`}
+              onClick={() => openInNewTab(item.link)}
+            >
+              <div class="divide-y divide-solid divide-maroon-600">
+                <div>
+                  <p className="text-xl text-maroon-700">{item.name}</p>
+                </div>
+                <div class="flex flex-wrap justify-between">
+                <p class="text-lg text-maroon-700">
+                  {item.endDate === null
+                          ? dateFormat(item.startDate)
+                          : [
+                              dateFormat(item.startDate),
+                              dateFormat(item.endDate),
+                            ].join(" - ")}
+                            </p>
+                            <p class="text-base text-maroon-700">{item.type}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        </div>
+      </div>
+    </>
   );
 };
 
