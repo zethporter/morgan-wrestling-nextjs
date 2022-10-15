@@ -18,6 +18,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const HomeContent = () => {
   const { data, error } = useSWR("/api/calendar", fetcher);
+  console.log(data);
   const [linkAlert, setLinkAlert] = useState(false);
   const today = new Date();
   const twoDaysAhead = new Date();
@@ -28,11 +29,12 @@ const HomeContent = () => {
       : setLinkAlert(true);
   };
 
-  const dateFormat = (date) => {
-    if (date === undefined || date === null) {
+  const dateFormat = (tempDate) => {
+    if (tempDate === undefined || tempDate === null) {
       return "";
     } else {
-      return new Intl.DateTimeFormat("en-US").format(new Date(date));
+      const date = new Date(tempDate);
+      return new Intl.DateTimeFormat("en-US").format(date);
     }
   };
 
@@ -61,7 +63,7 @@ const HomeContent = () => {
           Schedule
         </p>
         <div className="flex flex-wrap pt-2 gap-2.5">
-        {data.calendarItems.map((item, i) => {
+        {data.map((item, i) => {
           let disabled = null;
           new Date(item.startDate) > twoDaysAhead
             ? (disabled = {
