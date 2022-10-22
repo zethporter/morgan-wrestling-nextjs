@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+const dayjs = require('dayjs');
 
 
 
@@ -6,16 +7,13 @@ const SheduleCarousel = ({ data }) => {
     const maxScrollWidth = useRef(0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const carousel = useRef(null);
-    const today = new Date();
-    const twoDaysAhead = new Date();
-    twoDaysAhead.setDate(today.getDate() + 2);
+    const twoDaysAhead = dayjs().add(2, 'd').toDate();
 
     const dateFormat = (tempDate) => {
         if (tempDate === undefined || tempDate === null) {
             return "";
         } else {
-            const date = new Date(tempDate);
-            return new Intl.DateTimeFormat("en-US").format(date);
+            return dayjs(tempDate).format('MM/D/YYYY')
         }
     };
 
