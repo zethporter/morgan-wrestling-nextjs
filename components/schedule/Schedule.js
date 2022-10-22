@@ -1,22 +1,19 @@
 import react, { useState } from "react";
+const dayjs = require('dayjs');
 
 import { openInNewTab } from "../utils";
 
 
 const Schedule = ({ data }) => {
 
-    const [linkAlert, setLinkAlert] = useState(false);
-    const today = new Date();
-    const twoDaysAhead = new Date();
-    twoDaysAhead.setDate(today.getDate() + 2);
-    
+    const [linkAlert, setLinkAlert] = useState(false);    
+    const twoDaysAhead = dayjs().add(2, 'd').toDate();
 
     const dateFormat = (tempDate) => {
         if (tempDate === undefined || tempDate === null) {
             return "";
         } else {
-            const date = new Date(tempDate);
-            return new Intl.DateTimeFormat("en-US").format(date);
+            return dayjs(tempDate).format('MM/D/YYYY')
         }
     };
 
