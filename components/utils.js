@@ -1,5 +1,5 @@
 const openInNewTab = (url) => {
-    window.open(url, "_blank", "noopener,noreferrer");
+    url ? window.open(url, "_blank", "noopener,noreferrer") : alert('There is no link for this item');
 };
 
 const openInSameTab = (url) => {
