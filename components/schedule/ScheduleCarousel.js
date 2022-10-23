@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 const dayjs = require('dayjs');
 
+import { openInNewTab } from '../utils';
+
 
 
 const SheduleCarousel = ({ data }) => {
@@ -19,7 +21,7 @@ const SheduleCarousel = ({ data }) => {
 
     const movePrev = () => {
         if (currentIndex > 0) {
-            setCurrentIndex((prevState) => prevState - 1);
+            setCurrentIndex((prevState) => prevState - 0.4);
         }
     };
 
@@ -28,7 +30,7 @@ const SheduleCarousel = ({ data }) => {
             carousel.current !== null &&
             carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
         ) {
-            setCurrentIndex((prevState) => prevState + 1);
+            setCurrentIndex((prevState) => prevState + 0.4);
         }
     };
 
@@ -119,6 +121,7 @@ const SheduleCarousel = ({ data }) => {
                                 ? (disabled = {
                                     background: "default",
                                     border: item.home ? "border-maroon-600" : "border-gold-500",
+                                    hoverBg: item.home ? "hover:from-maroon-700 hover:text-white" : "hover:from-gold-500 hover:text-maroon-800",
                                     elevation: 5,
                                 })
                                 : (disabled = {
@@ -130,15 +133,15 @@ const SheduleCarousel = ({ data }) => {
                                 return (
                                     <div
                                         key={i}
-                                        className={`bg-white max-h-25 min-w-fit rounded shadow-xl py-2 pl-2 pr-6 border-l-4 ${disabled.border} hover:animate-pulse hover:bg-gold-100`}
+                                        className={`bg-white text-maroon-700 max-h-25 min-w-fit cursor-pointer rounded shadow-xl py-2 pl-2 pr-6 border-l-4 ${disabled.border} hover:bg-gradient-to-br ${disabled.hoverBg} transition-all ease-in-out duration-200`}
                                         onClick={() => openInNewTab(item.link)}
                                     >
                                         <div className="divide-y divide-solid divide-maroon-600">
                                             <div>
-                                                <p className="text-xl text-maroon-700">{item.name}</p>
+                                                <p className="text-xl text-inherit">{item.name}</p>
                                             </div>
                                             <div className="border-0">
-                                                <p className="text-lg text-maroon-700">
+                                                <p className="text-lg text-inherit">
                                                     {item.endDate === null
                                                         ? dateFormat(item.startDate)
                                                         : [
@@ -146,7 +149,7 @@ const SheduleCarousel = ({ data }) => {
                                                             dateFormat(item.endDate),
                                                         ].join(" - ")}
                                                 </p>
-                                                <p className="text-base text-maroon-700">{item.type}</p>
+                                                <p className="text-base text-inherit">{item.type}</p>
                                             </div>
                                         </div>
                                     </div>

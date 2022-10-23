@@ -1,26 +1,34 @@
 import react, { useState, useEffect } from "react";
-
+import Image from "next/image";
 import useSWR from "swr";
 
-import Schedule from './schedule/Schedule'
+import Schedule from "./schedule/Schedule";
 import SheduleCarousel from "./schedule/ScheduleCarousel";
-import Links from './communication/Links'
+import Links from "./communication/Links";
+
+import TrojanHead from "./svg/TrojanHead.svg";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const HomeContent = () => {
   const [list, setList] = useState(false);
+  const [tester, setTester] = useState();
   const { data, error } = useSWR("/api/calendar", fetcher);
-  
+
+  const handleToggle = (text) => {
+    setTester(text);
+  };
+
   if (!data)
     return (
       <div>
         <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-        <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
-          Morgan High Wrestling
-        </p>
-      </div>
-          <div className="animate-pulse w-full h-96 rounded-lg" height={200} />
+          <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
+          <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
+            Morgan High Wrestling
+          </p>
+        </div>
+        <div className="animate-pulse w-full h-96 rounded-lg" height={200} />
       </div>
     );
   if (error) return <p>No profile data</p>;
@@ -28,13 +36,28 @@ const HomeContent = () => {
   return (
     <>
       <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-        <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
+        <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
+        <p className="text-4xl mt-4 md:text-7xl text-center font-medium text-maroon-700 p-2">
           Morgan High Wrestling
         </p>
       </div>
-      {list ? <Schedule data={data} /> : <SheduleCarousel data={data} /> }
-      <div className="container flex justify-end">
-      <button onClick={() => setList(!list)} className="hover:from-gold-400/50 hover:via-gold-600/50 hover:to-gold-800/50 border-solid border-1 border-gold-600 bg-gradient-to-br from-gold-400/0 via-gold-600/0 to-gold-800/0 rounded text-white px-2 py-0.5 transition-all ease-in-out duration-500">{list ? 'Show Carousel' : 'Show List'}</button>
+      {list ? <Schedule data={data} /> : <SheduleCarousel data={data} />}
+
+      <div className="container mx-auto flex flex-row-reverse">
+        <label
+          htmlFor="default-toggle"
+          className="inline-flex relative items-center cursor-pointer"
+        >
+          <input
+            type="checkbox"
+            value={list}
+            id="default-toggle"
+            className="sr-only peer"
+            onClick={() => setList(!list)}
+          ></input>
+          <div className="w-11 h-6 bg-maroon-200 ring-4 ring-maroon-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-maroon-300 peer-checked:ring-4 peer-checked:ring-maroon-300"></div>
+          <span className="ml-3 text-xl font-xl text-gold-100 s">List</span>
+        </label>
       </div>
       <Links />
     </>

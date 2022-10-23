@@ -25,29 +25,31 @@ const Schedule = ({ data }) => {
             <div className="flex flex-wrap pt-2 gap-2.5">
                 {data.map((item, i) => {
                     let disabled = null;
-                    new Date(item.startDate) > twoDaysAhead
+                    dayjs(item.startDate) > twoDaysAhead
                         ? (disabled = {
-                            background: "default",
+                            background: "bg-white",
                             border: item.home ? "border-maroon-600" : "border-gold-500",
+                            hoverBg: item.home ? "hover:from-maroon-700 hover:text-white" : "hover:from-gold-500 hover:text-maroon-800",
                             elevation: 5,
                         })
                         : (disabled = {
-                            background: item.home ? "oldHome" : "oldAway",
+                            background: item.home ? "bg-maroon-200" : "bg-gold-200",
                             border: item.home ? "border-maroon-600" : "border-gold-500",
+                            hoverBg: item.home ? "hover:from-maroon-700 hover:text-white" : "hover:from-gold-500 hover:text-maroon-800",
                             elevation: 1,
                         });
                     return (
                         <div
                             key={i}
-                            className={`bg-white flex-grow w-full lg:w-1/3 rounded shadow-xl p-2 border-l-4 ${disabled.border} hover:animate-pulse hover:bg-gold-100`}
+                            className={`${disabled.background} flex-grow cursor-pointer w-full lg:w-1/3 rounded shadow-xl p-2 border-l-4 ${disabled.border} hover:bg-gradient-to-br ${disabled.hoverBg} transition-all ease-in-out duration-200`}
                             onClick={() => openInNewTab(item.link)}
                         >
                             <div className="divide-y divide-solid divide-maroon-600">
                                 <div>
-                                    <p className="text-xl text-maroon-700">{item.name}</p>
+                                    <p className="text-xl text-inherit">{item.name}</p>
                                 </div>
                                 <div className="flex flex-wrap justify-between">
-                                    <p className="text-lg text-maroon-700">
+                                    <p className="text-lg text-inherit">
                                         {item.endDate === null
                                             ? dateFormat(item.startDate)
                                             : [
