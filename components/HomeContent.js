@@ -1,10 +1,12 @@
 import react, { useState, useEffect } from "react";
-
+import Image from "next/image";
 import useSWR from "swr";
 
 import Schedule from "./schedule/Schedule";
 import SheduleCarousel from "./schedule/ScheduleCarousel";
 import Links from "./communication/Links";
+
+import TrojanHead from "./svg/TrojanHead.svg";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -21,7 +23,7 @@ const HomeContent = () => {
     return (
       <div>
         <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-          <img className="md:w-1/3" src="/TrojanHead.svg" />
+          <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
           <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
             Morgan High Wrestling
           </p>
@@ -34,7 +36,7 @@ const HomeContent = () => {
   return (
     <>
       <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-        <img src="/TrojanHead.svg" className="w-1/2 md:w-1/3 mx-auto" />
+        <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
         <p className="text-4xl mt-4 md:text-7xl text-center font-medium text-maroon-700 p-2">
           Morgan High Wrestling
         </p>
@@ -43,7 +45,7 @@ const HomeContent = () => {
 
       <div className="container mx-auto flex flex-row-reverse">
         <label
-          for="default-toggle"
+          htmlFor="default-toggle"
           className="inline-flex relative items-center cursor-pointer"
         >
           <input
