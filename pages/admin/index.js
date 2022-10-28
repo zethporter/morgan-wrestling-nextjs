@@ -18,18 +18,18 @@ const Admin = () => {
       </Head>
       <div className="container rounded-lg bg-white mx-auto mt-10 px-10">
         <p className="text-center pt-5 text-3xl text-maroon-700">Sign into your Morgan Wrestling Account</p>
+        {/* {!session ? (
         <div className="w-2/3 mx-auto bg-transparent snap-center mt-10 rounded-lg" style={{ padding: '50px 0 100px 0' }}>
-          {/* {!session ? (
             <Auth
               supabaseClient={supabase}
               appearance={{ theme: ThemeSupa }}
               theme="light"
             />
+        </div>
           ) : (
             <Account session={session} />
           )} */}
-          <Dashboard />
-        </div>
+        <Dashboard />
       </div>
     </div>
   )
