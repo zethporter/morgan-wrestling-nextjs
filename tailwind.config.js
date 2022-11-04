@@ -43,7 +43,9 @@ module.exports = {
         900: '#292929'
       },
       'white': '#ffffff',
-      'black': '#000000'
+      'black': '#000000',
+      'danger': '#dc2626',
+      'success': '#16a34a'
     },
     extend: {
       gridTemplateRows: {
