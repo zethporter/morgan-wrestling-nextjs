@@ -7,7 +7,7 @@ const TextBox = ({ label, options }) => {
         className="border border-maroon-800 grow p-2 rounded hover:bg-maroon-50  focus:ring-maroon-50"
       >
         {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
+          <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </select>
     </div>
