@@ -2,7 +2,6 @@ import react, { useState } from "react";
 const dayjs = require('dayjs');
 import useSWR from "swr";
 
-import { openInNewTab } from "../utils";
 import TextBox from "../formComponents/TextBox"
 import DateInput from "../formComponents/DateInput"
 import TimeInput from "../formComponents/TimeInput"
