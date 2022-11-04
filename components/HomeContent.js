@@ -5,6 +5,7 @@ import useSWR from "swr";
 import Schedule from "./schedule/Schedule";
 import SheduleCarousel from "./schedule/ScheduleCarousel";
 import Links from "./communication/Links";
+import Toggle from "./formComponents/Toggle"
 
 import TrojanHead from "./svg/TrojanHead.svg";
 
@@ -44,20 +45,8 @@ const HomeContent = () => {
       {list ? <Schedule data={data} /> : <SheduleCarousel data={data} />}
 
       <div className="container mx-auto flex flex-row-reverse">
-        <label
-          htmlFor="default-toggle"
-          className="inline-flex relative items-center cursor-pointer"
-        >
-          <input
-            type="checkbox"
-            value={list}
-            id="default-toggle"
-            className="sr-only peer"
-            onClick={() => setList(!list)}
-          ></input>
-          <div className="w-11 h-6 bg-maroon-200 ring-4 ring-maroon-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-maroon-300 peer-checked:ring-4 peer-checked:ring-maroon-300"></div>
-          <span className="ml-3 text-xl font-xl text-gold-100 s">List</span>
-        </label>
+        <Toggle onClick={() => setList(!list)} />
+        <p className="font-semibold text-gold-500 self-center text-xl">{list ? "Carousel" : "List"}</p>
       </div>
       <Links />
     </>

@@ -31,22 +31,7 @@ const Dashboard = () => {
                 Announcements
             </p>
             <div className="w-full max-h-80 overflow-auto divide-y divide-maroon-600 pt-2">
-                <div className="w-full flex flex-row justify-start bg-white p-1.5">
-                    <p className="text-md w-1/4 text-maroon-800">Name</p>
-                    <p className="text-md w-1/6 text-maroon-800">Start Date</p>
-                    <p className="text-md w-1/6 text-maroon-800">End Date</p>
-                    <p className="text-md text-maroon-800">Type</p>
-                </div>
-                {data.map((item, i) => {
-                    return (
-                        <div key={i} className="w-full flex flex-row justify-start p-1.5 hover:bg-gold-50 hover:rounded cursor-pointer">
-                            <p className="text-md w-1/4 text-maroon-800">{item.name}</p>
-                            <p className="text-md w-1/6 text-maroon-800">{item.startDate}</p>
-                            <p className="text-md w-1/6 text-maroon-800">{item.endDate}</p>
-                            <p className="text-md text-maroon-800">{item.type}</p>
-                        </div>
-                    );
-                })}
+                <p className="w-full text-3xl">Coming soon... 😘</p>
             </div>
         </div>
     )

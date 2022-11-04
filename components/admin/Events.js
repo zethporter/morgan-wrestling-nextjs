@@ -5,6 +5,8 @@ import useSWR from "swr";
 import { openInNewTab } from "../utils";
 import TextBox from "../formComponents/TextBox"
 import DateInput from "../formComponents/DateInput"
+import TimeInput from "../formComponents/TimeInput"
+import Select from "../formComponents/Select"
 import { HiCheckCircle, HiXCircle } from "react-icons/hi"
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -54,16 +56,37 @@ const Dashboard = () => {
                     );
                 })}
             </div>
-          
+
             <div className={`${modal} bg-black/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center`}>
                 <div className="relative p-4 w-full max-w-4xl h-full mx-auto mt-10 md:h-auto">
                     <div className="relative p-3 bg-white rounded-lg shadow">
-                    <TextBox />
-                    <DateInput />
-                        <div className="p-6 space-y-6">
-                            
+                        <div className="flex flex-col flex-wrap">
+                            <TextBox label={"Name:"} />
+                            <DateInput label={"Start Date:"} />
+                            <DateInput label={"End Date:"} />
+                            <TextBox label={"Location:"} />
+                            <TextBox label={"Type:"} />
+                            <TimeInput label={"Time:"} />
+                            <Select label={"Home/Away:"} options={[
+                                {
+                                    value: null,
+                                    label: "N/A"
+                                },
+                                {
+                                    value: true,
+                                    label: "Home"
+                                },
+                                {
+                                    value: false,
+                                    label: "Away"
+                                }
+                            ]} />
+                            <TextBox label={"Link:"} />
                         </div>
-                        
+                        <div className="p-6 space-y-6">
+
+                        </div>
+
                         <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                             <button data-modal-toggle="defaultModal" type="button" className="text-white bg-maroon-700 hover:bg-maroon-800 focus:ring-4 focus:outline-none focus:ring-maroon-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save</button>
                             <button onClick={() => setModal('hidden')} type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-maroon-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
