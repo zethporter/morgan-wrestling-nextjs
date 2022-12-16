@@ -1,3 +1,4 @@
+import { Dayjs } from 'dayjs';
 import { useState, useRef, useEffect } from 'react';
 const dayjs = require('dayjs');
 
@@ -9,7 +10,7 @@ const SheduleCarousel = ({ data }) => {
     const maxScrollWidth = useRef(0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const carousel = useRef(null);
-    const twoDaysAhead = dayjs().add(2, 'd').toDate();
+    const twoDaysAhead = dayjs().add(-2, 'd').toDate();
 
     const dateFormat = (tempDate) => {
         if (tempDate === undefined || tempDate === null) {
@@ -30,7 +31,7 @@ const SheduleCarousel = ({ data }) => {
                 >
                     {data.map((item, i) => {
                         let disabled = null;
-                        new Date(item.startDate) > twoDaysAhead
+                        dayjs(item.startDate) > twoDaysAhead
                             ? (disabled = {
                                 background: "default",
                                 border: item.home ? "border-maroon-600" : "border-gold-500",
@@ -42,7 +43,7 @@ const SheduleCarousel = ({ data }) => {
                                 border: item.home ? "border-maroon-600" : "border-gold-500",
                                 elevation: 1,
                             });
-                        if (new Date(item.startDate) > twoDaysAhead) {
+                        if (dayjs(item.startDate) > twoDaysAhead) {
                             return (
                                 <div
                                     key={i}

@@ -7,7 +7,7 @@ import { openInNewTab } from "../utils";
 const Schedule = ({ data }) => {
 
     const [linkAlert, setLinkAlert] = useState(false);    
-    const twoDaysAhead = dayjs().add(2, 'd').toDate();
+    const twoDaysAhead = dayjs().add(-2, 'd').toDate();
 
     const dateFormat = (tempDate) => {
         if (tempDate === undefined || tempDate === null) {
