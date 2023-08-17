@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { Box } from "@mui/material"
 import HomeContent from '../components/HomeContent'
 import Footer from '../components/footer'
 
