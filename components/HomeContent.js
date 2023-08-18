@@ -14,7 +14,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const HomeContent = () => {
   const [list, setList] = useState(false);
   const [tester, setTester] = useState();
-  const { data, error } = useSWR("/api/calendar", fetcher);
+  const { data, error, loading } = useSWR("/api/calendar", fetcher);
 
   const handleToggle = (text) => {
     setTester(text);
@@ -24,28 +24,29 @@ const HomeContent = () => {
     return (
       <div className="hero min-h-screen bg-white">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <TrojanHead className="p-1 max-w-sm rounded-lg " />
-          <div>
-            <h1 className="text-5xl text-primary font-bold">Morgan High Wrestling</h1>
-            <p className="py-6 text-accent">Welcome to the Morgan High wrestling page. Below you will see the schedule and other important information for parents and wrestlers.</p>
-          </div>
+          <p className="text-3xl text-primary">Oops something went wrong.</p>
         </div >
       </div >
     );
+
   if (error) return <p>No profile data</p>;
+
+  if (loading) return <p>loading...</p>
+
 
   return (
     <>
-      <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-        <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
-        <p className="text-4xl mt-4 md:text-7xl text-center font-medium text-maroon-700 p-2">
-          Morgan High Wrestling
-        </p>
-      </div>
+      <div className="hero-content bg-white flex-col lg:flex-row-reverse">
+        <TrojanHead className="p-1 max-w-sm rounded-lg " />
+        <div>
+          <h1 className="text-5xl text-primary font-bold">Morgan High Wrestling</h1>
+          <p className="py-6 text-accent">Welcome to the Morgan High wrestling page. Below you will see the schedule and other important information for parents and wrestlers.</p>
+        </div>
+      </div >
       {list ? <Schedule data={data} /> : <SheduleCarousel data={data} />}
 
       <div className="container mx-auto flex flex-row-reverse">
-        <Toggle onClick={() => setList(!list)} />
+        <Toggle color={'secondary'} onClick={() => setList(!list)} />
         <p className="font-semibold text-gold-500 self-center text-xl">{list ? "Carousel" : "List"}</p>
       </div>
       <Links />
