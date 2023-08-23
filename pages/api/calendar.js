@@ -1,5 +1,5 @@
-import path from 'path';
-import { link, promises as fs } from 'fs';
+import path from "path";
+import { link, promises as fs } from "fs";
 import clientPromise from "../../lib/mongodb";
 
 export default async (req, res) => {
@@ -15,9 +15,8 @@ export default async (req, res) => {
       .sort({ startDate: 1 })
       .toArray();
 
-      res.status(200).json(calendarItems);
+    res.status(200).json(calendarItems);
   } catch (e) {
-    console.error(e);
+    res.status(500).json(e.message);
   }
-
-}
+};

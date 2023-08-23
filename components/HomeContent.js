@@ -1,55 +1,53 @@
 import react, { useState, useEffect } from "react";
-import Image from "next/image";
-import useSWR from "swr";
+import clsx from "clsx";
 
 import Schedule from "./schedule/Schedule";
 import SheduleCarousel from "./schedule/ScheduleCarousel";
 import Links from "./communication/Links";
-import Toggle from "./formComponents/Toggle"
+import Toggle from "./formComponents/Toggle";
 
 import TrojanHead from "./svg/TrojanHead.svg";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
 const HomeContent = () => {
-  const [list, setList] = useState(false);
-  const [tester, setTester] = useState();
-  const { data, error } = useSWR("/api/calendar", fetcher);
-
-  const handleToggle = (text) => {
-    setTester(text);
-  };
-
-  if (!data)
-    return (
-      <div>
-        <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-          <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
-          <p className="text-4xl md:text-7xl text-center font-medium text-maroon-700 p-2">
-            Morgan High Wrestling
-          </p>
-        </div>
-        <div className="animate-pulse w-full h-96 rounded-lg" height={200} />
-      </div>
-    );
-  if (error) return <p>No profile data</p>;
-
+  const [activeTab, setActiveTab] = useState(0);
   return (
-    <>
-      <div className="container bg-white rounded-lg mx-auto p-2 shadow-xl">
-        <TrojanHead className="w-1/2 md:w-1/3 mx-auto" />
-        <p className="text-4xl mt-4 md:text-7xl text-center font-medium text-maroon-700 p-2">
-          Morgan High Wrestling
-        </p>
+    <main className="min-h-screen">
+      <div className="hero">
+        <div className="hero-content rounded-xl flex-col lg:flex-row-reverse">
+          <TrojanHead className="p-1 max-w-sm" />
+          <div>
+            <p className="text-5xl text-primary font-bold">
+              Morgan High Wrestling
+            </p>
+            <p className="py-6 text-secondary-content">
+              Welcome to the Morgan High wrestling page. Below you will see the
+              schedule and other important information for parents and
+              wrestlers.
+            </p>
+          </div>
+        </div>
       </div>
-      {list ? <Schedule data={data} /> : <SheduleCarousel data={data} />}
-
-      <div className="container mx-auto flex flex-row-reverse">
-        <Toggle onClick={() => setList(!list)} />
-        <p className="font-semibold text-gold-500 self-center text-xl">{list ? "Carousel" : "List"}</p>
+      <div className="w-fit tabs tabs-boxed mx-auto px-2 py-1 bg-zinc-200">
+        <a
+          className={clsx("tab text-primary text-2xl", {
+            "tab-active": activeTab === 0,
+          })}
+          onClick={() => setActiveTab(0)}
+        >
+          Schedule
+        </a>
+        <a
+          className={clsx("tab text-primary text-2xl", {
+            "tab-active": activeTab === 1,
+          })}
+          onClick={() => setActiveTab(1)}
+        >
+          Links
+        </a>
       </div>
-      <Links />
-    </>
+      {activeTab === 0 && <Schedule />}
+      {activeTab === 1 && <Links />}
+    </main>
   );
 };
 

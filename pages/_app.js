@@ -1,23 +1,32 @@
-import { useState } from 'react'
-import { ThemeProvider, CssBaseline } from "@mui/material"
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
-// import { SessionContextProvider } from '@supabase/auth-helpers-react'
-import theme from '../components/theme'
-import '../styles/globals.scss'
+import { SWRConfig } from "swr";
+import axios from "axios";
+import Head from "next/head";
+
+import "../styles/globals.css";
+import Footer from "../components/footer";
 
 function MyApp({ Component, pageProps }) {
-  // const [supabaseClient] = useState(() => createBrowserSupabaseClient())
   return (
-    // <SessionContextProvider
-      // supabaseClient={supabaseClient}
-      // initialSession={pageProps.initialSession}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme />
+    <SWRConfig
+      value={{
+        fetcher: (resource, init) =>
+          axios.get(resource, init).then((res) => res.data),
+      }}
+    >
+      <Head>
+        <title>Morgan Wrestling | Home</title>
+        <meta
+          name="Morgan Wrestling"
+          content="Morgan High Wrestling schedule calendar"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="bg-gradient-to-br from-zinc-50 to-zinc-200">
         <Component {...pageProps} />
-      </ThemeProvider>
-    // </SessionContextProvider>
-  )
-
+        <Footer />
+      </div>
+    </SWRConfig>
+  );
 }
 
-export default MyApp
+export default MyApp;
